@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPDB SLBN 1 Tana Toraja</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f7f4;color:#26352c}
+header{background:#17633e;color:white;text-align:center;padding:35px 15px}
+header h1{font-size:26px}
+nav{background:#104b30;padding:15px;text-align:center}
+nav a{color:white;text-decoration:none;margin:10px;font-size:14px}
+.container{max-width:900px;margin:25px auto;padding:15px}
+.card{background:white;padding:25px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px #ddd}
+h2{color:#17633e}
+.btn{display:inline-block;background:#16834c;color:white;padding:13px 20px;border-radius:7px;text-decoration:none;border:0;cursor:pointer}
+input,select,textarea{width:100%;padding:12px;margin:8px 0 15px;border:1px solid #ccc;border-radius:6px}
+label{font-weight:bold}
+footer{background:#104b30;color:white;text-align:center;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>PPDB ONLINE</h1>
+<h2 style="color:white">UPT SLB NEGERI 1 TANA TORAJA</h2>
+<p>TAHUN PELAJARAN 2027/2028</p>
+</header>
+<nav>
+<a href="#beranda">Beranda</a>
+<a href="#informasi">Informasi</a>
+<a href="#daftar">Pendaftaran</a>
+</nav>
+<div class="container">
+<section class="card" id="beranda">
+<h2>Selamat Datang</h2>
+<p>Selamat datang di website Penerimaan Peserta Didik Baru UPT SLB Negeri 1 Tana Toraja Tahun Pelajaran 2027/2028.</p>
+<p>Mari bergabung dan memperoleh layanan pendidikan khusus yang ramah dan berkualitas.</p>
+<a href="#daftar" class="btn">Daftar Sekarang</a>
+</section>
+<section class="card" id="informasi">
+<h2>Informasi Pendaftaran</h2>
+<p>Silakan mempersiapkan data calon peserta didik dan dokumen persyaratan yang ditetapkan oleh sekolah.</p>
+<p>Informasi jadwal dan persyaratan lengkap dapat diperoleh melalui sekolah.</p>
+</section>
+<section class="card" id="daftar">
+<h2>Formulir Pendaftaran</h2>
+<p>Silakan isi data calon peserta didik berikut.</p>
+<form onsubmit="event.preventDefault();alert('Formulir contoh berhasil diisi. Data belum tersimpan. Silakan hubungi sekolah untuk pendaftaran resmi.');">
+<label>Nama Lengkap</label>
+<input type="text" required placeholder="Nama calon peserta didik">
+<label>Tempat, Tanggal Lahir</label>
+<input type="text" required placeholder="Tempat dan tanggal lahir">
+<label>Jenis Kelamin</label>
+<select required>
+<option value="">Pilih jenis kelamin</option>
+<option>Laki-laki</option>
+<option>Perempuan</option>
+</select>
+<label>Nama Orang Tua/Wali</label>
+<input type="text" required placeholder="Nama orang tua/wali">
+<label>Nomor HP</label>
+<input type="tel" required placeholder="Nomor HP aktif">
+<label>Alamat</label>
+<textarea required placeholder="Alamat lengkap"></textarea>
+<button class="btn" type="submit">Kirim Formulir</button>
+</form>
+</section>
+</div>
+<footer>
+<p>UPT SLB NEGERI 1 TANA TORAJA</p>
+<p>PPDB Tahun Pelajaran 2027/2028</p>
+</footer>
+</body>
+</html>
