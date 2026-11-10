@@ -4,73 +4,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PPDB SLBN 1 Tana Toraja</title>
+<title>PPDB UPT SLB Negeri 1 Tana Toraja 2027/2028</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f7f4;color:#26352c}
-header{background:#17633e;color:white;text-align:center;padding:35px 15px}
-header h1{font-size:26px}
-nav{background:#104b30;padding:15px;text-align:center}
-nav a{color:white;text-decoration:none;margin:10px;font-size:14px}
-.container{max-width:900px;margin:25px auto;padding:15px}
-.card{background:white;padding:25px;border-radius:12px;margin-bottom:20px;box-shadow:0 2px 8px #ddd}
-h2{color:#17633e}
-.btn{display:inline-block;background:#16834c;color:white;padding:13px 20px;border-radius:7px;text-decoration:none;border:0;cursor:pointer}
-input,select,textarea{width:100%;padding:12px;margin:8px 0 15px;border:1px solid #ccc;border-radius:6px}
-label{font-weight:bold}
-footer{background:#104b30;color:white;text-align:center;padding:20px}
+body{font-family:Arial,sans-serif;margin:0;background:#f1f5f2;color:#26352b}
+header{background:#176b43;color:white;text-align:center;padding:30px 15px}
+header h1{margin:8px 0;font-size:25px}
+header p{margin:6px}
+main{max-width:760px;margin:25px auto;padding:20px}
+.card{background:white;padding:25px;border-radius:12px;box-shadow:0 3px 12px #0001}
+h2{color:#176b43;text-align:center}
+label{display:block;font-weight:bold;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #bbb;border-radius:6px;font-size:15px}
+button{width:100%;padding:14px;background:#176b43;color:white;border:0;border-radius:7px;font-size:16px;font-weight:bold;margin-top:20px;cursor:pointer}
+button:disabled{opacity:.6;cursor:wait}
+#pesan{margin-top:15px;padding:12px;border-radius:6px;display:none;white-space:pre-line}
+footer{text-align:center;padding:20px;color:#666;font-size:13px}
 </style>
 </head>
 <body>
 <header>
-<h1>PPDB ONLINE</h1>
-<h2 style="color:white">UPT SLB NEGERI 1 TANA TORAJA</h2>
-<p>TAHUN PELAJARAN 2027/2028</p>
+<p>PEMERINTAH PROVINSI SULAWESI SELATAN</p>
+<p>DINAS PENDIDIKAN</p>
+<h1>UPT SLB NEGERI 1 TANA TORAJA</h1>
+<h3>PENERIMAAN PESERTA DIDIK BARU</h3>
+<p>Tahun Pelajaran 2027/2028</p>
 </header>
-<nav>
-<a href="#beranda">Beranda</a>
-<a href="#informasi">Informasi</a>
-<a href="#daftar">Pendaftaran</a>
-</nav>
-<div class="container">
-<section class="card" id="beranda">
-<h2>Selamat Datang</h2>
-<p>Selamat datang di website Penerimaan Peserta Didik Baru UPT SLB Negeri 1 Tana Toraja Tahun Pelajaran 2027/2028.</p>
-<p>Mari bergabung dan memperoleh layanan pendidikan khusus yang ramah dan berkualitas.</p>
-<a href="#daftar" class="btn">Daftar Sekarang</a>
-</section>
-<section class="card" id="informasi">
-<h2>Informasi Pendaftaran</h2>
-<p>Silakan mempersiapkan data calon peserta didik dan dokumen persyaratan yang ditetapkan oleh sekolah.</p>
-<p>Informasi jadwal dan persyaratan lengkap dapat diperoleh melalui sekolah.</p>
-</section>
-<section class="card" id="daftar">
-<h2>Formulir Pendaftaran</h2>
-<p>Silakan isi data calon peserta didik berikut.</p>
-<form onsubmit="event.preventDefault();alert('Formulir contoh berhasil diisi. Data belum tersimpan. Silakan hubungi sekolah untuk pendaftaran resmi.');">
-<label>Nama Lengkap</label>
-<input type="text" required placeholder="Nama calon peserta didik">
-<label>Tempat, Tanggal Lahir</label>
-<input type="text" required placeholder="Tempat dan tanggal lahir">
+
+<main>
+<div class="card">
+<h2>FORMULIR PENDAFTARAN</h2>
+<p>Silakan isi data calon peserta didik dengan benar.</p>
+
+<form id="formPPDB">
+<label>Nama Lengkap Calon Peserta Didik *</label>
+<input name="nama_lengkap" required>
+
+<label>Tempat Lahir</label>
+<input name="tempat_lahir">
+
+<label>Tanggal Lahir</label>
+<input type="date" name="tanggal_lahir">
+
 <label>Jenis Kelamin</label>
-<select required>
+<select name="jenis_kelamin">
 <option value="">Pilih jenis kelamin</option>
-<option>Laki-laki</option>
-<option>Perempuan</option>
+<option value="Laki-laki">Laki-laki</option>
+<option value="Perempuan">Perempuan</option>
 </select>
-<label>Nama Orang Tua/Wali</label>
-<input type="text" required placeholder="Nama orang tua/wali">
-<label>Nomor HP</label>
-<input type="tel" required placeholder="Nomor HP aktif">
-<label>Alamat</label>
-<textarea required placeholder="Alamat lengkap"></textarea>
-<button class="btn" type="submit">Kirim Formulir</button>
+
+<label>Nama Orang Tua/Wali *</label>
+<input name="nama_orang_tua" required>
+
+<label>Nomor HP Orang Tua/Wali *</label>
+<input type="tel" name="nomor_hp" required>
+
+<label>Alamat Lengkap *</label>
+<textarea name="alamat" rows="3" required></textarea>
+
+<button type="submit" id="tombol">KIRIM PENDAFTARAN</button>
+<div id="pesan" role="status" aria-live="polite"></div>
 </form>
-</section>
 </div>
+</main>
+
 <footer>
-<p>UPT SLB NEGERI 1 TANA TORAJA</p>
-<p>PPDB Tahun Pelajaran 2027/2028</p>
+UPT SLB Negeri 1 Tana Toraja<br>
+Penerimaan Peserta Didik Baru Tahun 2027/2028
 </footer>
+
+<script>
+const SUPABASE_URL = "https://mxyrgjdfcvgkvqjwcaij.supabase.co";
+const SUPABASE_KEY = "sb_publishable_zknaBtImMptatqIpwPghnA_GOHcRWME";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+const form = document.getElementById("formPPDB");
+const pesan = document.getElementById("pesan");
+const tombol = document.getElementById("tombol");
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  tombol.disabled = true;
+  tombol.textContent = "Mengirim...";
+  pesan.style.display = "none";
+
+  const data = new FormData(form);
+  const nomor = "PPDB-2027-" +
+    Date.now().toString().slice(-8);
+
+  const pendaftaran = {
+    nomor_pendaftaran: nomor,
+    nama_lengkap: data.get("nama_lengkap").trim(),
+    tempat_lahir: data.get("tempat_lahir").trim() || null,
+    tanggal_lahir: data.get("tanggal_lahir") || null,
+    jenis_kelamin: data.get("jenis_kelamin") || null,
+    nama_orang_tua: data.get("nama_orang_tua").trim(),
+    nomor_hp: data.get("nomor_hp").trim(),
+    alamat: data.get("alamat").trim()
+  };
+
+  try {
+    const { error } = await supabaseClient
+      .from("pendaftaran")
+      .insert([pendaftaran]);
+
+    if (error) throw error;
+
+    pesan.style.display = "block";
+    pesan.style.background = "#e1f5e8";
+    pesan.style.color = "#176b43";
+    pesan.textContent =
+      "Pendaftaran berhasil dikirim!\n" +
+      "Nomor pendaftaran: " + nomor +
+      "\nSilakan simpan nomor pendaftaran ini.";
+    form.reset();
+
+  } catch (error) {
+    pesan.style.display = "block";
+    pesan.style.background = "#fde8e8";
+    pesan.style.color = "#a11";
+    pesan.textContent =
+      "Pendaftaran belum berhasil dikirim.\n" +
+      "Keterangan: " + error.message;
+  } finally {
+    tombol.disabled = false;
+    tombol.textContent = "KIRIM PENDAFTARAN";
+  }
+});
+</script>
 </body>
 </html>
